@@ -62,7 +62,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gaharavara's scrapbook`,
-        short_name: `scrapbook`,
+        short_name: `gaharavara`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

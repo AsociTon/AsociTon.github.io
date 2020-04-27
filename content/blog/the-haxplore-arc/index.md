@@ -39,7 +39,7 @@ pretty excited but a lot tired at the same time so we decided to take a break fi
 
 We started by roaming around BHU, we ate bati chokha ( it's one of the best dishes of my side which I was longing for! ) then we took an auto to visit assi ghat, it was flooded at that time, water was near to the top stairs, we couldn't go for boating :(
     instead we went for sipping masala tea! and watching the holy river Ganga flow.
-
+![team Error 404 at assi ghat](./haxplore-assi-ghat.jpg)
 At night we finally concluded on what to build and then went to sleep since the next day was going to be hectic. The next morning we were all set for the hackathon! 
 
 ### Haxplore'19
@@ -76,7 +76,7 @@ with AWS related issues any help related to google related services from their s
 really a sad end for us, it was the most unexpected issue we ran into! what we thought was hitting a bug or bottleneck related to integration or bakcend mechanisms. So we had proper time alloted for them and through the all nighter we overcomed all of such issues.
 
 Anyways after 10:30am we left the venue to head back to our accomodation, we again encountered Daksh ( the high school guy), we had a decent conversation and were 
-annoyed that the final pitching was kept confidential to the top teams only. He told us he was unable to complete his webapp. He had his train in the evnening while our train was the next day evening.
+annoyed that the final pitching was kept confidential to the top teams only. He told us he was unable to complete his webapp because he hit some issue too. He had his train in the evnening while our train was on the next day evening.
 
 We were too tired to do anything, the all nighter we pulled and the train journey it all came back, I myself was so tired that I barely just woke up for dinner then again 
 went to sleep.
@@ -84,9 +84,10 @@ went to sleep.
 ### Visit to Sarnath
 The next morning we packed our stuff headed out of BHU ( we kind of woke late and missed the breakfast ), we were accompanied by one more guy from the Hackathon, we 
 had our breakfast-lunch together then we parted ways with him as he had a flight in the afternoon. We headed to the destination we planned on visiting before leaving 
-Varnasi. It was Sarnath, it is a famous worshipping place for Budhists, we visited the museum, and the big Buddha shrine along with the mini zoo, all located in the 
-Sarnath area. Their was even a bit of rain in the mid, We passed the whole afternoon exploring Sarnath. It was a real soothing and peaceful experience for us after all
-the hustle we did in the past days.
+Varnasi. It was Sarnath, it is a famous place of worship for Buddhists, we visited the museum, and the big Buddha shrine along with the mini zoo, all located in the 
+Sarnath area. Their was even a bit of rain in the mid, We passed the whole afternoon exploring Sarnath. It was a real soothing experience for us after all
+the hustle we did in the past few days.
 
-In the evening we were back on the station to catch our train and head back to our college.
+![sarnath was peaceful!](./haxplore-sarnath.jpg)
 
+In the evening we were back on the station to catch our train and head back to our college life. This was a great learning experience for us. We got a cool break too!
