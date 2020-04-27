@@ -1,22 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[gaharavara's ScrapBook]]></title><description><![CDATA[gaharavara's scrapbook]]></description><link>https://gaharavara.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 25 Apr 2020 18:43:41 GMT</lastBuildDate><item><title><![CDATA[The Haxplore Arc]]></title><description><![CDATA[My journey to Haxplore 2019 led me to the most distant place I travelled for
-attending a hackathon, it was a hackathon by IIT BHU afterall…]]></description><link>https://gaharavara.github.io/the-haxplore-arc/</link><guid isPermaLink="false">https://gaharavara.github.io/the-haxplore-arc/</guid><pubDate>Fri, 23 Aug 2019 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;My journey to Haxplore 2019 led me to the most distant place I travelled for
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[gaharavara's ScrapBook]]></title><description><![CDATA[gaharavara's scrapbook]]></description><link>https://gaharavara.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 27 Apr 2020 16:07:36 GMT</lastBuildDate><item><title><![CDATA[Rubaroo'19]]></title><description><![CDATA[Rubaroo is an annual cultural fest organized by SRMIST, NCR campus. We have student participating from various other colleges. It is the…]]></description><link>https://gaharavara.github.io/rubaroo/</link><guid isPermaLink="false">https://gaharavara.github.io/rubaroo/</guid><pubDate>Sun, 22 Sep 2019 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;Rubaroo is an annual cultural fest organized by SRMIST, NCR campus. We have student participating from various other colleges. It is the biggest fest organized by our
+college.&lt;/p&gt;
+&lt;p&gt;Personally I always wanted to be a part of the organizing committee and 3rd year was the last year to do so! I was planning on to go for a technical position and working
+for the website was something that I was confident in doing, so I approached for the same, later I realized that I was not the only one who was interested and college
+politics and favorism kicked in :^ ( the sole reason why I didn’t ever try applying earlier in any of such activities, keep your life as easy going as it can be and stay away from shit as much as you can. After first year in college IDGAF became one of my life’s main mantra!, it’s powerful actually )
+Since this was kinda my last opportunity, so I put some efforts. I already had once presented the initial frontend design I created to the main OC, but the matter got cold and I was not expecting an entry into Rubaroo’19.&lt;/p&gt;
+&lt;p&gt;After few weeks I was called again and asked if I could proceed with my initial design ? not much time was left before the fest now, also you need to have a website before you can start sending invitations and sponsorship NOCs! a date was given to present the
+most completed version of the website I could and other interested members were asked to do the same ( This was something you are supposed to do in the starting though! ), at this point there was already a selected website for the fest! I completed the first 2 pages and presented them.
+&lt;img src=&quot;&quot; alt=&quot;yeah! you can guess what happened&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The work started their was so less time before the official website launch that their was a “create by WIX” suggestion too! anyways even if a bit childish it was something against my pride as a
+full stack developer. Also the work I had done on the first 2 pages were purely in vanilla HTML, CSS and JS( around 300 lines ). So I planned on contnuing it, shifting it to bootstrap was a burden for me also using a free template would have spoilt my current design. I was also concerned about the bottlenecks I would run into with forked code. So after some thought with my crazy hackathon mindset I went on
+using open source libraries for complex tasks, integrating them with my frontend and making a desktop responsive website for the fest was my first main task. The most important factor in doing
+frontend work is you need time, you need to try out different styles, color patterns and what not, to make the site look good!
+I had half of thursday, full friday, saturday and by sunday eve I had to roll out the desktop version at the very least. I had to miss all the classes for thursday and friday without any OD (OD is like an allowed leave where you are given attendance, all the Rubaroo members upto volunteer level are given OD ). I had no time to argue or inquire about why I wasn’t getting OD, By sunday eve I managed to get the desktop version done, it took me 3 more hours to shift the current code to make the website responsive for phone screens! since it was my code and all the design related decisions were mine to begin with it was kind of satisfying to shift to responsive phone view and even though I just planned on completing only the desktop version, I ended up doing the phone version too! around 9:00pm I was done then I had dinner and I went to sleep! &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The majority of the whole website was written in this period of 3 days from scratch and was optimised for mobile and desktop both. I barely slept during this period, I still remember when I went to college on monday I had dark circles under my eyes, as a backbencher I simply slept in all the classes! ( I was low on attendance so without OD attending classes was compulsory for me, thanks to my previous ventures ) it was actually my hackathon exposure that allowed me do this much work, the code exceeded around 1400+ lines and it was my first time managing these many lines of code, since from the first line to the last was written by me, it was byhearted by the time I finished working!  :)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;now when I think of it, it seems a bit stupid since a bit of carelessness and even a single line error would have thrown me in endless debugging ( I had no tests or anything only Git and my memory were my lifeline for managing the updation/deletion/addition to 1400+ lines of code) I am still proud of it though.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The website was intended to be hosted on a node server, but was later shifted to a static website. &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;particle.js&lt;/code&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;slider.js&lt;/code&gt;&lt;/strong&gt; are some of the open source libraries used to power the website. My workflow was to work on one page at a time, commit and push the new stable version! Heroku for fast deployment and testing to check the site looks the way it is supposed to when deployed.&lt;/p&gt;
+&lt;p&gt;After monday there were a few more fixes to improve responsiveness for some screen sizes, the site was hosted at &lt;a href=&quot;https://srmrubaroo.in&quot;&gt;https://srmrubaroo.in&lt;/a&gt;
+Another major issue, was the images were bulky for the mobile view, taking it longer to load( I totally missed this point while working! ), thanks to a resource suggestion by the editing team all the images were reduced to pretty low sizes and increased the overall performance of the site.
+&lt;img src=&quot;&quot; alt=&quot;rubaroo&amp;#x27;19 site mobile view&quot;&gt;
+The official site of SRM’s annual cultural fest Rubaroo for the year 2019, ( Rubaroo’19 ).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The code of the website is present in &lt;a href=&quot;https://github.com/gaharavara/Rubaroo-server&quot;&gt;Rubaroo’19&lt;/a&gt; repository, a gif of the full website desktop version is also present in case if you are intereseted :)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At the last moment a sponsors page was asked to be added. I ended up using bootstrap for this page:|
+&lt;img src=&quot;&quot; alt=&quot;on the day of fest!&quot;&gt;
+On the days of fest ( Rubaroo has a duration of 2 days ) while the other teams had work, I was totally free!!! I roamed around and enjoyed the fest ( from my school days itself, I enjoy attending fests actually! ), the position of Technical Executive did come
+with some perks and &lt;strong&gt;to sum up I think Rubaroo was overall a good experience&lt;/strong&gt;!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[The Haxplore Arc]]></title><description><![CDATA[An invitation! My journey to Haxplore 2019 led me to the most distant place I travelled for
+attending a hackathon, it was a hackathon by IIT…]]></description><link>https://gaharavara.github.io/the-haxplore-arc/</link><guid isPermaLink="false">https://gaharavara.github.io/the-haxplore-arc/</guid><pubDate>Thu, 22 Aug 2019 23:46:37 GMT</pubDate><content:encoded>&lt;h3&gt;An invitation!&lt;/h3&gt;
+&lt;p&gt;My journey to Haxplore 2019 led me to the most distant place I travelled for
 attending a hackathon, it was a hackathon by IIT BHU afterall + we got
 travel reimbursements! ( thanks to them for taking care of our accomodation too ),
 it was their first time organizing a hackathon! and we had high hopes from this hackathon.&lt;/p&gt;
+&lt;h3&gt;Journey to Benaras&lt;/h3&gt;
 &lt;p&gt;Our team of three departed from Ghaziabad, India to travel around 800 Kms to reach Varanasi.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Insight: Varanasi or Benaras is the oldest living city of the world and is the city of our
 lord Shiva, you must have heard the chants of Om, yeah that’s his signature!&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Varanasi is the neighbouring city to my hometown.&lt;/p&gt;
+&lt;p&gt;side note: Varanasi is also the neighbouring city to my hometown.&lt;/p&gt;
 &lt;p&gt;Our journey was a 14hrs journey via train and it went quite well! we had planned on deciding what to make
 in the hackathon during this duration but the window seat took it all away! initially we had a little
 discussion on certain ideas but then we put on our earphones turned the music on and kneeled our heads on the
 window looking at the view outside. It was peaceful, we spent our time talking before we fell asleep …&lt;/p&gt;
+&lt;h3&gt;Setting foot in BHU&lt;/h3&gt;
 &lt;p&gt;The next morning our train was right on time ( for Indian railway it’s a big thing ) and we reached our destination,
 the station was the most beautiful station of Indian railways that I ever came across! we got some snacks and booked
 a cab to BHU.( I could mention a lot here like incident at the snack shop, incident with OLA but I will keep this part short )&lt;/p&gt;
-&lt;p&gt;BHU or Benaras Hindu University is like a city in itself, you have to take e-rickshaw to travel from one department to another,
+&lt;p&gt;BHU or Benaras Hindu University is like a city in itself, you have to take e-rickshaw to travel from one department building to another,
 that is the size of this university. It was my first time seeing this huge university, anyway I already had an idea of what to expect! our venue was Malviya
 block where we had to do some paperwork on the registration booth for identification and later after completion, we were provided
 with our haxplore ID cards and some CODEFEST goodies.
@@ -51,10 +81,77 @@ with our haxplore ID cards and some CODEFEST goodies.
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;We were guided to our accomodation, after taking a short break we left to explore the city in the eve :D&lt;/p&gt;
-&lt;p&gt;In the eve we started by roaming around BHU, we ate bati chokha ( it’s one of the best dishes of my side which I was longing for! ) then we took an auto to visit assi ghat, it was flooded at that time, water was near to the top stairs, we couldn’t go for boating :(
-instead we went for sipping masala tea! and watching the holy river Ganga flow.&lt;/p&gt;
-&lt;p&gt;At night we finally concluded on what to build and then went to sleep since the next day was going to be hectic. The next morning we were all set for the hackathon! &lt;/p&gt;</content:encoded></item><item><title><![CDATA[About My Scrapbook!]]></title><description><![CDATA[Wow! I am doing it, I guess I will be maintaining a number of pages on a monthly/weekly basis,
+&lt;p&gt;We were guided to our accomodation, a lot of other participants were already present and more were coming, after settling down, we talked to a number of other teams! we found out people had travelled from various parts of India, a certain team was planning on to visit the city after an hour and asked us to join them, we were
+pretty excited but a lot tired at the same time so we decided to take a break first and asked them to go on, in the eve we too set out to explore the city :D&lt;/p&gt;
+&lt;p&gt;We started by roaming around BHU, we ate bati chokha ( it’s one of the best dishes of my side which I was longing for! ) then we took an auto to visit assi ghat, it was flooded at that time, water was near to the top stairs, we couldn’t go for boating :(
+instead we went for sipping masala tea! and watching the holy river Ganga flow.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5d9a64fac12f6f8851b818b119ff4b46/47311/haxplore-id-card.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAUDBP/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAGvLocDVsE5YBXYGf/EABwQAAICAgMAAAAAAAAAAAAAAAEDAAIEERIiMv/aAAgBAQABBQJ51St3cplHpb1GLDAMZYM//8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8BCDP/xAAVEQEBAAAAAAAAAAAAAAAAAAARIP/aAAgBAgEBPwFj/8QAHhAAAQMEAwAAAAAAAAAAAAAAAQACEQMQITEiQWH/2gAIAQEABj8C3CbLzE2HpVPkDnq0OQ3i3//EABsQAQEAAgMBAAAAAAAAAAAAAAERACEQMUFx/9oACAEBAAE/IU0N+I5cImfd8QKEE35ldHCTgHpBusRDuvfH/9oADAMBAAIAAwAAABA7z3z/xAAXEQEBAQEAAAAAAAAAAAAAAAABEBEh/9oACAEDAQE/ENogcZ//xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8QMGRn/8QAHRABAQABBAMAAAAAAAAAAAAAAREhABAxQWGRwf/aAAgBAQABPxAVdLEMgszzZqqAVZgg2pyoHoi0841bHFchk59bFWoFTMn3WcIAvcabf//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;team Error 404 at assi ghat&quot;
+        title=&quot;team Error 404 at assi ghat&quot;
+        src=&quot;/static/5d9a64fac12f6f8851b818b119ff4b46/1c72d/haxplore-id-card.jpg&quot;
+        srcset=&quot;/static/5d9a64fac12f6f8851b818b119ff4b46/a80bd/haxplore-id-card.jpg 148w,
+/static/5d9a64fac12f6f8851b818b119ff4b46/1c91a/haxplore-id-card.jpg 295w,
+/static/5d9a64fac12f6f8851b818b119ff4b46/1c72d/haxplore-id-card.jpg 590w,
+/static/5d9a64fac12f6f8851b818b119ff4b46/a8a14/haxplore-id-card.jpg 885w,
+/static/5d9a64fac12f6f8851b818b119ff4b46/47311/haxplore-id-card.jpg 1080w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+At night we finally concluded on what to build and then went to sleep since the next day was going to be hectic. The next morning we were all set for the hackathon! &lt;/p&gt;
+&lt;h3&gt;Haxplore’19&lt;/h3&gt;
+&lt;p&gt;In the morning we were informed about the venue of the hackathon, it was the CSE department building of IIT BHU, we were told it was only around 1km far so we decided
+to walk! while on route we saw a lot of other teams too approaching the venue, everyone was wearing the provided Haxplore t-shirts so it was quite easy to find our way to the venue. &lt;/p&gt;
+&lt;p&gt;We all gathered in a mini auditorium, after breakfast we had an inauguration ceremony followed by code of conduct for the hackathon and a quick event related doubts clearing session by the organizers. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We were told by the organizers that out of 120+, only 40 teams had been shortlisted to attend this hackathon so we should appreciate the fact that we made it this far.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It was a moment of happiness for each one of us. We were divided into 2 groups and were provided guided to our Hackathon venue in the neighbouring building.&lt;/p&gt;
+&lt;p&gt;The hackathon had officially started, our team Error 404 started by making sure each of our systems had proper internet connection ( hehe, afterall hackathons are all about bottlenecks and googling ). We started from scratch, first step was
+to determine our end product on paper, we marked the essential features that were needed to make a presentable protoype by the end of 24 hrs, advanteges that come with certain features and what to really build to include in the prototype.&lt;/p&gt;
+&lt;p&gt;The breaks for snacks in the eve and the dinner at night were the only breaks we took. During that time we talked with other participants, we even met a team that was from SRM, Amravati campus! ( our team was from SRM, NCR campus )&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The first issue I faced was related to asynchronous programming in JS when working on the node server while using google maps API( It was an afternoon and eve-mare for me, I ended up wasting a lot of my time here ). I was a bit above beginner level in knowledge about using
+google maps API, but the functionality we were trying to achieve here was quite complex. It got done somehow, a lot of hacks :)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Somewhere around this time we had our first round of evaluation, there were three judges who were GitHub campus experts from their respective colleges, the judge evaluating
+our idea was quite impressed, we were told in case if we complete the project we will surely be among the top teams that will pitch during the final round. This was a real booster for our team.&lt;/p&gt;
+&lt;p&gt;Later in the night I was working on integrating socket.io for the push notifications feature needed in our project when I was interrupted by a guy who was sitting right next to our team he told me that socket.io was an awesome framework and really makes a lot of jobs so much easier, I couldn’t agree more! We talked a bit about the projects we were building, since we were both short on time we got back to working.
+Later in the night during one of the fun events I got to know that this guy was a high school student! I was quite shocked and impressed at the same time, he even travelled from the same city as me ( a shocking co-incideence )&lt;/p&gt;
+&lt;p&gt;Our team had to pull an all nighter, but in the morning we were nearly ready with our prototype the backend was done ( it was not completely satisfactory but it was working ), In the morning itself I had a heavy head, when consulted with other team memebers they too had the same! so, for frontend we agreed on having just skeleton html and cicumstancial css and js. In the morning the Hackathon was supposed to end around 11:00 am.&lt;/p&gt;
+&lt;p&gt;Later while one of my team mates was doing some API changes we ran into the biggest blunder of this hackathon, by mistake a conditional loop ran for some infinite time doing some infinite API calls
+( in case if you guessed! yeah ) our solution was utilizing the free google credits recieved on opening a new account with google maps API and registering your debit card! We were
+using google firebase too, all the credits got exhausted because of that blunder:(&lt;/p&gt;
+&lt;p&gt;We contacted the judges, we looked for some alternative! but at this point it was too late we needed to have a working model to qualify for the final pitching and the organizers re-iterated that the hackthon was sponsored by AWS so they could only help
+with AWS related issues any help related to google related services from their side was not possible at that moment, the main judges too were from Amazon. This was
+really a sad end for us, it was the most unexpected issue we ran into! what we thought was hitting a bug or bottleneck related to integration or bakcend mechanisms. So we had proper time alloted for them and through the all nighter we overcomed all of such issues.&lt;/p&gt;
+&lt;p&gt;Anyways after 10:30am we left the venue to head back to our accomodation, we again encountered Daksh ( the high school guy), we had a decent conversation and were
+annoyed that the final pitching was kept confidential to the top teams only. He told us he was unable to complete his webapp because he hit some issue too. He had his train in the evnening while our train was on the next day evening.&lt;/p&gt;
+&lt;p&gt;We were too tired to do anything, the all nighter we pulled and the train journey it all came back, I myself was so tired that I barely just woke up for dinner then again
+went to sleep.&lt;/p&gt;
+&lt;h3&gt;Visit to Sarnath&lt;/h3&gt;
+&lt;p&gt;The next morning we packed our stuff headed out of BHU ( we kind of woke late and missed the breakfast ), we were accompanied by one more guy from the Hackathon, we
+had our breakfast-lunch together then we parted ways with him as he had a flight in the afternoon. We headed to the destination we planned on visiting before leaving
+Varnasi. It was Sarnath, it is a famous place of worship for Buddhists, we visited the museum, and the big Buddha shrine along with the mini zoo, all located in the
+Sarnath area. Their was even a bit of rain in the mid, We passed the whole afternoon exploring Sarnath. It was a real soothing experience for us after all
+the hustle we did in the past few days.&lt;/p&gt;
+&lt;p&gt;In the evening we were back on the station to catch our train and head back to our college life. This was a great learning experience for us. We got a cool break too!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[About My Scrapbook!]]></title><description><![CDATA[Wow! I am doing it, I guess I will be maintaining a number of pages on a monthly/weekly basis,
 the pages will contain summary of what I did…]]></description><link>https://gaharavara.github.io/about-my-scrapbook/</link><guid isPermaLink="false">https://gaharavara.github.io/about-my-scrapbook/</guid><pubDate>Mon, 23 Apr 2012 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;Wow! I am doing it, I guess I will be maintaining a number of pages on a monthly/weekly basis,
 the pages will contain summary of what I did, something I came across, my interests ( precisely speaking highlights for that duration! ).&lt;/p&gt;
 &lt;p&gt;I have been thinking about writing some stuff, mostly for my future self! well I could write a
