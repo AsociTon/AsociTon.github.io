@@ -31,23 +31,20 @@ In the previous approach we were switching between the Gtk.TreeView and Gtk.Icon
 We preferred to keep the logic simpler and instead to recreate the widgets when the view mode is changed. This approach was easily possible with FlowBox by [re-binding the model](https://developer.gnome.org/gtk3/stable/GtkFlowBox.html#gtk-flow-box-bind-model) and specifying a different create_widget_func. This also saved us from wasting memory in storing two sets of child widgets.
 
 ### Setting up Drag and Drop along with Rubber Band selection:
-This task took a significant amount of time. I introduced Drag and Drop in Pitvi first, initially the dragging wouldn’t work at all, instead multiple items would get selected in the direction of dragging, at first I didn’t look much into the cause behind this behaviour, my initial stance was maybe I was not implementing the drag and drop correctly in Pitivi. After a lot of debugging when nothing worked, I realized I should try implementing it in a minimal Python script first. This is when I noticed by default in FlowBox if we drag over it’s children they come under rubberband selection.
+This task took a significant amount of time. In my first implementation of Drag and Drop the dragging wouldn’t work at all, instead multiple items would get selected in the direction of dragging. At first I didn’t look much into the cause behind this behaviour, my initial stance was maybe I was not implementing the drag and drop correctly in Pitivi. After a lot of debugging when nothing worked, I realized I should try implementing it in a minimal Python script first. This is when I noticed by default in FlowBox if we drag over it’s children they come under rubberband selection.
 
-The first subtask was to stop this behaviour because in Pitivi the users would prefer dragging the asset to timeline by default over selecting multiple assets.There was no clear way listed to differentiate between dragging as in drag and drop and dragging in case of rubberband selection. To get a better idea I looked into the codebase of Gtk.FlowBox where I found it used Gtk.Gestures to govern the rubberband  behaviour but I still couldn’t find anything on how to distinguish it from a drag and drop operation.
+The first subtask was to stop this behaviour because in Pitivi the users would prefer dragging the asset to timeline by default over selecting multiple assets.There was no clear way how to differentiate between dragging as in drag and drop and dragging in case of rubberband selection. To get a better idea what's going on, I looked into the codebase of Gtk.FlowBox where I found it used Gtk.Gestures to govern the rubberband behaviour but I still couldn’t find anything on how to distinguish it from a drag and drop operation.
 
-In Pitivi’s previous implementation Gtk.IconView had both of these operations perfectly working together. A major point I came across while playing with it was thatone could only initiate the rubberband selection from an empty space, dragging over an asset would simply initiate a drag and drop operation
+In Pitivi’s previous implementation Gtk.IconView had both of these operations perfectly working together. A major point I came across while playing with it was that one could only initiate the rubberband selection from an empty space. Dragging over an asset would simply initiate a drag and drop operation. I then decided to read the codebase of Gtk.IconView to better understand how to implement/replicate it in Pitivi.
 
-I then decided to read the codebase of Gtk.IconView to better understand how to implement/replicate it in Pitivi.
-
-The way we handle it in Pitivi now is by setting True or False to signal propagation after button-press-event, in case if we propagate the signal further by returning True via the button-press-event callback method we say yes to rubberband selection, which means everything you drag upon comes under rubberband selection. In case if we don’t propagate the signal by returning False, we block the default behaviour and drag and drop comes into play.
+Now we differentiate between drag & drop and the rubberband selection by controlling the propagation of the "button-press-event" signal. In case if we propagate the signal further by returning True in the button-press-event handler we say yes to rubberband selection, which means everything you drag upon is selected. If we don’t propagate the signal by returning False, we block the default behaviour and drag and drop comes into play.
 
 How do we decide whether to propagate the signal or not ?
-This is inspired by Gtk.IconView, we simply check if there is any asset under the cursor when we start dragging, if yes the dragging is meant for a drag and drop operation so we block the propagation of the "button-press-event" signal Otherwise we propagate the signal which results  into rubberband selection.
+This is inspired by Gtk.IconView, we simply check if there is any asset under the cursor when we start dragging, if yes the dragging is meant for a drag and drop operation so we block the propagation of the "button-press-event" signal. Otherwise we propagate the signal which results  into rubberband selection.
 
-We havelogic to better govern this behaviour in the button-press-event callback method.
+We have logic to better govern this behaviour in the button-press-event callback method.
 
-P.S. A shout out to the last implementation, the codebase was pretty readable and I actually never had to go through any struggles in understanding what was going on in the previous implementation and that was a major booster!
-
+P.S. A shout out to the last implementation, the codebase was pretty readable and I actually never had to go through any struggles in understanding what was going on in the previous implementation and that was a major booster !
 
 ### What’s next in Pitivi ?
 Now with the upgraded Media Library we are all set to introduce new features ! The first one we are working on is **Adding Tagging functionality to clips which will allow us to display the assets by tag as a Folder View.**

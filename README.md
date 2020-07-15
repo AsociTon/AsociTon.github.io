@@ -31,6 +31,9 @@ _Have another more specific idea? You may want to check out our vibrant collecti
     cd my-blog-starter/
     gatsby develop
     ```
+2.  **Publish on GitHub**
+
+    ```gatsby build```
 
 1.  **Open the source code and start editing!**
 
