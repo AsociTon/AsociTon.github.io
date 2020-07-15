@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[gaharavara's ScrapBook]]></title><description><![CDATA[gaharavara's scrapbook]]></description><link>https://gaharavara.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 17 May 2020 14:30:59 GMT</lastBuildDate><item><title><![CDATA[Into GSoC'20 | Pitivi]]></title><description><![CDATA[I think it was around 11:30pm in the night and I was sure about receiving a mail from google anytime soon, will I be accepted or rejected? I…]]></description><link>https://gaharavara.github.io/into-gsoc-2020/</link><guid isPermaLink="false">https://gaharavara.github.io/into-gsoc-2020/</guid><pubDate>Mon, 04 May 2020 23:36:32 GMT</pubDate><content:encoded>&lt;p&gt;I think it was around 11:30pm in the night and I was sure about receiving a mail from google anytime soon, will I be accepted or rejected? I was so nervous that I was thinking of going to sleep and maybe check it in the morning!&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[gaharavara's ScrapBook]]></title><description><![CDATA[gaharavara's scrapbook]]></description><link>https://gaharavara.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 15 Jul 2020 03:04:55 GMT</lastBuildDate><item><title><![CDATA[Refactoring Pitivi's Media Library]]></title><description><![CDATA[Since my GSoC project is about improving Pitivi’s Media Library and introducing new features to it, the first task was to clean it up. To…]]></description><link>https://gaharavara.github.io/refactoring-pitivi- medialibrary/</link><guid isPermaLink="false">https://gaharavara.github.io/refactoring-pitivi- medialibrary/</guid><pubDate>Tue, 14 Jul 2020 23:36:32 GMT</pubDate><content:encoded>&lt;p&gt;Since my GSoC project is about improving Pitivi’s Media Library and introducing new features to it, the first task was to clean it up.&lt;/p&gt;
+&lt;p&gt;To display assets the Media Library used a Gtk.TreeView widget to show a detailed list view and a Gtk.IconView widget to show a simpler icon view. Some major drawbacks with the previous implementation using two separate widgets are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We had two widgets in memory ( we toggled their visibility to switch between the list view and the icon view )&lt;/li&gt;
+&lt;li&gt;We had redundant code and callbacks for the same signals ( one to handle Gtk.TreeView and the other for Gtk.IconView )&lt;/li&gt;
+&lt;li&gt;Any new feature would require us to implement it in two widgets, using two widgets also brought their native bugs with them&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What we needed was a single widget that could support both views, saving us from all the aforementioned drawbacks. Luckily such a widget called &lt;a href=&quot;https://developer.gnome.org/gtk3/stable/GtkFlowBox.html&quot;&gt;Gtk.FlowBox&lt;/a&gt; was introduced in GTK 3.12, six years ago.&lt;/p&gt;
+&lt;p&gt;The plan was to only use Gtk.FlowBox under the hood to display both list view and icon view, hence refactoring the already present logic into Gtk.FlowBox was  the only task.&lt;/p&gt;
+&lt;p&gt;Now let us look at some technical details around how we’re using &lt;strong&gt;Gtk.FlowBox and how we refactored the code&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;First leap:&lt;/h3&gt;
+&lt;p&gt;One idea was to first refactor listview and then iconview into Gtk.FlowBox. This seemed a good approach at first as we were breaking a big task into smaller steps, but soon an issue came up.&lt;/p&gt;
+&lt;p&gt;Gtk.FlowBox uses Gio.ListStore, while Gtk.TreeView and Gtk.IconView rely on Gtk.TreeModel. If we kept one of the previous widgets we would have to keep the  TreeModel along with it too. This would just add unnecessary tasks to the project, we would have to add some temporary methods to parse and sync both the models. So after a brief discussion it was decided we simply go all in. There was no actual need of breaking the task in two parts in the first place.&lt;/p&gt;
+&lt;h3&gt;Setting up Gtk.FlowBox for the first time:&lt;/h3&gt;
+&lt;p&gt;I started by introducing a minimal Gtk.FlowBox widget and commenting out all the code that powered the previous views. Initially it took some time to get used to FlowBox and figuring out on how to actually use Gio.ListStore with Gtk.FlowBox.&lt;/p&gt;
+&lt;h3&gt;The way we toggle between views:&lt;/h3&gt;
+&lt;p&gt;In the previous approach we were switching between the Gtk.TreeView and Gtk.IconView widgets having one of them visible at a time. Initially I replicated a similar approach for FlowBox, keeping two widgets per item.&lt;/p&gt;
+&lt;p&gt;We preferred to keep the logic simpler and instead to recreate the widgets when the view mode is changed. This approach was easily possible with FlowBox by &lt;a href=&quot;https://developer.gnome.org/gtk3/stable/GtkFlowBox.html#gtk-flow-box-bind-model&quot;&gt;re-binding the model&lt;/a&gt; and specifying a different create&lt;em&gt;widget&lt;/em&gt;func. This also saved us from wasting memory in storing two sets of child widgets.&lt;/p&gt;
+&lt;h3&gt;Setting up Drag and Drop along with Rubber Band selection:&lt;/h3&gt;
+&lt;p&gt;This task took a significant amount of time. In my first implementation of Drag and Drop the dragging wouldn’t work at all, instead multiple items would get selected in the direction of dragging. At first I didn’t look much into the cause behind this behaviour, my initial stance was maybe I was not implementing the drag and drop correctly in Pitivi. After a lot of debugging when nothing worked, I realized I should try implementing it in a minimal Python script first. This is when I noticed by default in FlowBox if we drag over it’s children they come under rubberband selection.&lt;/p&gt;
+&lt;p&gt;The first subtask was to stop this behaviour because in Pitivi the users would prefer dragging the asset to timeline by default over selecting multiple assets.There was no clear way how to differentiate between dragging as in drag and drop and dragging in case of rubberband selection. To get a better idea what’s going on, I looked into the codebase of Gtk.FlowBox where I found it used Gtk.Gestures to govern the rubberband behaviour but I still couldn’t find anything on how to distinguish it from a drag and drop operation.&lt;/p&gt;
+&lt;p&gt;In Pitivi’s previous implementation Gtk.IconView had both of these operations perfectly working together. A major point I came across while playing with it was that one could only initiate the rubberband selection from an empty space. Dragging over an asset would simply initiate a drag and drop operation. I then decided to read the codebase of Gtk.IconView to better understand how to implement/replicate it in Pitivi.&lt;/p&gt;
+&lt;p&gt;Now we differentiate between drag &amp;#x26; drop and the rubberband selection by controlling the propagation of the “button-press-event” signal. In case if we propagate the signal further by returning True in the button-press-event handler we say yes to rubberband selection, which means everything you drag upon is selected. If we don’t propagate the signal by returning False, we block the default behaviour and drag and drop comes into play.&lt;/p&gt;
+&lt;p&gt;How do we decide whether to propagate the signal or not ?
+This is inspired by Gtk.IconView, we simply check if there is any asset under the cursor when we start dragging, if yes the dragging is meant for a drag and drop operation so we block the propagation of the “button-press-event” signal. Otherwise we propagate the signal which results  into rubberband selection.&lt;/p&gt;
+&lt;p&gt;We have logic to better govern this behaviour in the button-press-event callback method.&lt;/p&gt;
+&lt;p&gt;P.S. A shout out to the last implementation, the codebase was pretty readable and I actually never had to go through any struggles in understanding what was going on in the previous implementation and that was a major booster !&lt;/p&gt;
+&lt;h3&gt;What’s next in Pitivi ?&lt;/h3&gt;
+&lt;p&gt;Now with the upgraded Media Library we are all set to introduce new features ! The first one we are working on is &lt;strong&gt;Adding Tagging functionality to clips which will allow us to display the assets by tag as a Folder View.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This feature empowers Pitivi’s user base to categorize their assets in the Media Library. An asset can have multiple tags. Multiple assets can have common tags. Assets can be filtered based on their tags by searching.&lt;/p&gt;
+&lt;p&gt;The first step is to extend the current asset properties dialog to include a &lt;strong&gt;Tags&lt;/strong&gt; property and a proper way to add and store new tags.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ac79081c4fea7004abbd2a3f3e3341e1/2bef9/tagging-in-pitivi.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB9klEQVQ4y41UbW7TQBD1ZbgBF+EanAJxBSh/4B8SEhVCgiLxj6gSigRRA26LklYC20HNR2PH9vpz7V0/drbeYNwEGOnZlnfmzezbZ1too2ma7b0SErVskPMKGa/BJcCrCpyX4GWJSj2bXFNnwuoSmkXvfIzJcAB78B5XnwdYjD+CbXykaYqExQgC/48B9hLKdu3D44e4d/cOLg+fIDg5RvbtE2TGtkV1XUNK8W9CvSRqLN48xasH9zF7+QiTt8+xPD5CzUKTCCHE/xFSSClRxRugTOF73yH8K8hgoRaEyWwnlLsJjXZdCNq+Wrxe+/DDCCFLEMUxfN9HpnQksl11BAu96B7O9XKpCbKMkGnQdH8LPWGe54jVBKWyBOlDoML1et1rpuxUV0iTBEnC1Imz7TNT9UWR3xCGYQjHceC6LubzOTzPw1JNR8lRFCFXkzFll/OzU41oE8BzHZyd2vj6ZYyL6QQ/ZzO4zg9YpEeRF4q9gG3bGA6HGI1GmE6nqitDuAn1JFJ56t3rQ7x4dqDtlabZre3Sziy6cM63L2irRqemtYgJrrZUKj0LJQ3J03eIUJbTE5KG9DkZMgOauttMtFYBflusC9JXa0jFRNgHve9+YlREWq5WK20hAzq8m1x52za7omtebfxe025ja59Bu9j3Z9nV+BdMaYjuwcpVmwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;tags-in-pitivi&quot;
+        title=&quot;tags-in-pitivi&quot;
+        src=&quot;/static/ac79081c4fea7004abbd2a3f3e3341e1/fcda8/tagging-in-pitivi.png&quot;
+        srcset=&quot;/static/ac79081c4fea7004abbd2a3f3e3341e1/12f09/tagging-in-pitivi.png 148w,
+/static/ac79081c4fea7004abbd2a3f3e3341e1/e4a3f/tagging-in-pitivi.png 295w,
+/static/ac79081c4fea7004abbd2a3f3e3341e1/fcda8/tagging-in-pitivi.png 590w,
+/static/ac79081c4fea7004abbd2a3f3e3341e1/efc66/tagging-in-pitivi.png 885w,
+/static/ac79081c4fea7004abbd2a3f3e3341e1/2bef9/tagging-in-pitivi.png 1024w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+The second step is to extend it to manage possible operations on tags in case multiple assets are under selection!&lt;/p&gt;
+&lt;p&gt;Last step would be to introduce The Folder View, which shows the assets into folders based on their tags.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Into GSoC'20 | Pitivi]]></title><description><![CDATA[I think it was around 11:30pm in the night and I was sure about receiving a mail from google anytime soon, will I be accepted or rejected? I…]]></description><link>https://gaharavara.github.io/into-gsoc-2020/</link><guid isPermaLink="false">https://gaharavara.github.io/into-gsoc-2020/</guid><pubDate>Mon, 04 May 2020 23:36:32 GMT</pubDate><content:encoded>&lt;p&gt;I think it was around 11:30pm in the night and I was sure about receiving a mail from google anytime soon, will I be accepted or rejected? I was so nervous that I was thinking of going to sleep and maybe check it in the morning!&lt;/p&gt;
 &lt;p&gt;Then a thought about respecting the efforts I had put in came and I thought let’s see whatever it is, I’m not gonna insult my hard work by hiding from the result!&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
