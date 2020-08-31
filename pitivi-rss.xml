@@ -4,8 +4,123 @@
 <title><![CDATA[gaharavara's ScrapBook]]></title>
 <description><![CDATA[gaharavara's scrapbook]]></description>
 <link>https://gaharavara.github.io</link>
-<lastBuildDate>Wed, 15 Jul 2020 22:19:15 GMT</lastBuildDate>
-
+<lastBuildDate>Mon, 31 Aug 2020 02:34:32 GMT</lastBuildDate>
+<item>
+<title><![CDATA[Google Summer Of Code 2020 Final Report]]></title><description><![CDATA[During this summer I improved Pitivi’s Media Library. The work included both refactoring and adding new functionalities. My proposal has a…]]></description><link>https://gaharavara.github.io/gsoc-2020-final-report/</link><guid isPermaLink="false">https://gaharavara.github.io/gsoc-2020-final-report/</guid><pubDate>Sat, 29 Aug 2020 23:36:32 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.86486486486486%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAC4jAAAuIwF4pT92AAABlElEQVQoz6WSTU8TURSG+2uICTsSE4EGDIStLiQBorgw2AJFQsKKAoENtlW3LvwFsDJxwQYTVoTvggoRCKUftNOZMlA6FenHzL2Pk4GWEZee5OTee+7Jk/PmPR4pJe6Q5ezd3f6Tt2f9fa//fnicRlFBFlYRZ1+wjt4g8stII1qj1mG1KJWvyWoKaeUURc1wmkmh5rJUqpUasIp1GMDcfIi52oAZbcdKhrlFYRgGqqqi67pT2V3fZ3I4wujLKcZfzTLyPEhwOISeO78BOpPtv7BBHVh7vVjfn2L9HICrXUoVSSqZQLOB8ZM4gipfFzbpeTDJSOcHfC0h/N4wA4/mOFcLLuBeH9aPZ5jfnmDudGIdDMGvHcpVbFCMTDpNPHbiTLg0v4GvNcR03ycmuj8StDPQ8R5duXRJtgHmVjPmWiPmtteWHKlLLhpFNE0jf5F3Ksuft+hvmmHwcRh/21tee+cIdL0jnzPcpqwj9EXblDHE5QqyGP3LDLcp179LJI4zJGNZJxPHCkoqhxACz79ro/zX2vwBGfg4eNEaeAQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GSoC @ Pitivi&quot;
+        title=&quot;GSoC @ Pitivi&quot;
+        src=&quot;/static/0724c96375807a0259dc1300101aab53/fcda8/gsoc_pitivi.png&quot;
+        srcset=&quot;/static/0724c96375807a0259dc1300101aab53/12f09/gsoc_pitivi.png 148w,
+/static/0724c96375807a0259dc1300101aab53/e4a3f/gsoc_pitivi.png 295w,
+/static/0724c96375807a0259dc1300101aab53/fcda8/gsoc_pitivi.png 590w,
+/static/0724c96375807a0259dc1300101aab53/efc66/gsoc_pitivi.png 885w,
+/static/0724c96375807a0259dc1300101aab53/c83ae/gsoc_pitivi.png 1180w,
+/static/0724c96375807a0259dc1300101aab53/b6c94/gsoc_pitivi.png 1429w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;
+During this summer I improved Pitivi’s Media Library. The work included both refactoring and adding new functionalities. My &lt;a href=&quot;https://docs.google.com/document/d/1QK97dKm89BcAoO5N25EsDBCTqmb-mz0_g6h8YuFAFN0/edit?usp=sharing&quot;&gt;proposal&lt;/a&gt; has a detailed roadmap on the goals I set to achieve during this summer.&lt;/p&gt;
+&lt;h3&gt;Initial cleanup&lt;/h3&gt;
+&lt;p&gt;To prepare the codebase for introducing new modes of displaying the clips in the Media Library, I refactored the code to unify the iconview and listview modes of the Media Library into a single responsive grid view. The two modes were using different types of widgets, requiring duplicate logic. Now both iconview and listview modes are powered by a single &lt;a href=&quot;https://lazka.github.io/pgi-docs/#Gtk-3.0/classes/FlowBox.html#Gtk.FlowBox&quot;&gt;Gtk.FlowBox&lt;/a&gt; widget.
+Issue &lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/issues/1343&quot;&gt;#1343&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/merge_requests/305&quot;&gt;Link To Submitted MR.&lt;/a&gt;  ( merged )&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gaharavara.github.io/refactoring-pitivi-%20medialibrary/&quot;&gt;Link To Related Blog.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Shifting the asset action buttons to a new action bar&lt;/h3&gt;
+&lt;p&gt;The Tagging functionality is accessed through a new Tag button, for which we needed to make space since the MediaLibrary’s toolbar was already very crowded.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 576px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e615accacc90e7b875bf25bbd90307d2/533c1/initially_medialibrary.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAABqUlEQVQ4y7WSvWsUQRiHr1H8AI1i/MCYU4zuzvd+3O3usXvCRdDYCLZiQNtY5R8IaBVNnUYsRe0FEVtrQbS1E/w3HmfG3BFMukSGZwdm9332985MzxpDkWeRssiwRuGcYzAYkBcFhUcphRACKeW+TN8b7+qZrKRevudZibOrb2FdRjOqqZqKUdugjY5FUoZCiUgFaZrOSJIkiqMwpBhlY5arOzSqw8kypqtcRakGDE1FVVR0445iaDG5l+kllJZorSNB1rYtTdP4hM5wbnueuQ9nOPVpjsW1PlYa9MY11GYfvdVH3l+iSBoe1c95XL/gSb1F6+4iVOKFJkpDB9ZaerawHPl9nN7OmH91EZda1OdL6K/n0T8uINeu0ty8zbPJFzYn33g5+c5KueqT3vB7bmOrQRr2vmdzy+mPZzn28yRHf53g8sYVnDCo7UX0mwX0+wXkw+sM0zFPu9est29Z794xyR8gdOJl/wjDw6QG61PZxGBCu/4QwmzEDurvmtJihtZqJtojDB/vxmiz71oo3M1Utlc4/cthCw/C/xceBvEexlM+YLopwfUH9/qdwWx38BEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;medialibrary before the introudction of new action bar&quot;
+        title=&quot;medialibrary before the introudction of new action bar&quot;
+        src=&quot;/static/e615accacc90e7b875bf25bbd90307d2/533c1/initially_medialibrary.png&quot;
+        srcset=&quot;/static/e615accacc90e7b875bf25bbd90307d2/12f09/initially_medialibrary.png 148w,
+/static/e615accacc90e7b875bf25bbd90307d2/e4a3f/initially_medialibrary.png 295w,
+/static/e615accacc90e7b875bf25bbd90307d2/533c1/initially_medialibrary.png 576w&quot;
+        sizes=&quot;(max-width: 576px) 100vw, 576px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We decided to group all the buttons related to the selected clips on a new toolbar at the bottom of MediaLibrary. Initially we came up with a design of a floating toolbar at the bottom using &lt;a href=&quot;https://lazka.github.io/pgi-docs/index.html#Gtk-3.0/classes/Overlay.html#Gtk.Overlay&quot;&gt;Gtk.Overlay&lt;/a&gt;. We went through a number of iterations on various ways to place it and settled on using a standard &lt;a href=&quot;https://lazka.github.io/pgi-docs/#Gtk-3.0/classes/ActionBar.html#Gtk.ActionBar&quot;&gt;Gtk.ActionBar&lt;/a&gt; which is designed to present contextual actions, exactly what we needed.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 571px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d2d619329cff115f7a465187ef78515e/17d73/medialibrary_current.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.21621621621621%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAAB0ElEQVQ4y62TPWsUQRjHVyxEEiWmOVKcsThzMzsvO7uzc/uSw8uBhRKwULAXISjBxk+QSsE0IQFFLJLSD2CrWIpopfhB/AJ/n2eTPU+SRQuL3+7wzH9/+8zsTmStQVEEhOBRjAKs0XBpirIsqRYwoprWGnEcQynViZSyyUXaeYTJLZTT2xjR3RUTOOdIWCAPOfLcNzIhBCHnEDOGQ9FIkyRBlKYZytENbIxvIncldVSTJMe4GiO1GaxKoGJ93KWSJ5BAq6bGcHe8orquqcNMY+ntFSx+uISFT4vob/dhBIWe9aH2iJdXEd8bIBuWeFC9wFZ1gEfVK0zcHUi1RkIz2xJjDCITDM7/vIAI54gIvf0VOGGh3q9Af+5Bf+shfnwNxfUJdqYf8XzjK3an37HpH0LoAe150ohY2izZeIOld8tY+HIZF39Qh09XkUgS7q1Cv+5DH1KX9wfwwwpb6wfYrt/gyfoRpuldSL1GMjsTWmsR8cVIc4wgFE3Slzax+c1JTel4Bgta0Skhh+cx2pxZ4wfnaWWnhe1b/rewK/wvc38VtqEW/nHbcVf2D+FZcJDn+Xfw3jcniMdd+UbIga6lcSClcx3oCPJJYGmWZZ15dv0CE2aeFqqq3A8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;medialibrary after the introduction of new action bar&quot;
+        title=&quot;medialibrary after the introduction of new action bar&quot;
+        src=&quot;/static/d2d619329cff115f7a465187ef78515e/17d73/medialibrary_current.png&quot;
+        srcset=&quot;/static/d2d619329cff115f7a465187ef78515e/12f09/medialibrary_current.png 148w,
+/static/d2d619329cff115f7a465187ef78515e/e4a3f/medialibrary_current.png 295w,
+/static/d2d619329cff115f7a465187ef78515e/17d73/medialibrary_current.png 571w&quot;
+        sizes=&quot;(max-width: 571px) 100vw, 571px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/merge_requests/318/diffs?commit_id=a760f69687d876394a7bc5f54cabdf7da8069953&quot;&gt;Link To Submitted Commit.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Tagging clips in the Media Library&lt;/h3&gt;
+&lt;p&gt;I introduced a new Tag button which reveals a Popover for tagging the selected clips. A clip can have multiple tags. Multiple clips can have common tags. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/3648ef2d67542bbb8aa66b7c727ded19/pitivi_tagging_functionality.gif&quot; alt=&quot;Tagging Feature&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://lazka.github.io/pgi-docs/index.html#Gtk-3.0/classes/Popover.html#Gtk.Popover&quot;&gt;Gtk.Popover&lt;/a&gt; shown by the Tag button displays all the tags  using a &lt;strong&gt;Gtk.ListBox&lt;/strong&gt;. The state of each tag can be controlled using a Gtk.CheckButton. A CheckButton is “checked” when all the selected clips have the corresponding tag, “unchecked” when none of the clips have the tag, and “inconsistent” when only some of the clips have the tag. Clicking the CheckButton takes it through the three states. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A Gtk.Entry&lt;/strong&gt; allows to specify a new tag to be associated with all the selected clips. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;An “Apply”&lt;/strong&gt; button saves the changes in the project. The Apply button remains disabled unless there are changes to be applied. It does not permit creating a duplicate tag.
+Note: After applying the change via the Apply button it is not written in the project’s xges files. To do so we need to save the project.
+Taking advantage of the fact that the GES.UriClipAsset is a GES.MetaContainer, we store the tags under the individual clip’s metadata ( “pitivi::tags” ). When saving the project, the tags are thus saved in the project’s xges file. While working on saving and retrieving asset metadata we encountered a minor bug in GES because of which we were unable to retrieve the saved metadata from a reloaded project. So we worked on a fix before moving on.&lt;/p&gt;
+&lt;p&gt;I introduced new test cases exercising the UI for addition and removal of tags under several scenarios.
+Issue &lt;strong&gt;&lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/issues/537&quot;&gt;#537&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/merge_requests/318&quot;&gt;Link To Submitted MR.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Filtering of clips based on their tags&lt;/h3&gt;
+&lt;p&gt;After completing the Tagging feature our plan was to utilise it for filtering the clips. We worked on extending our current search functionality to include searching by tags. Luckily the search bar in MediaLibrary is composed of Gtk.Entry which has a convenient method &lt;a href=&quot;https://lazka.github.io/pgi-docs/index.html#Gtk-3.0/classes/Entry.html#Gtk.Entry.set_completion&quot;&gt;set_completion&lt;/a&gt; to assign an &lt;a href=&quot;https://lazka.github.io/pgi-docs/index.html#Gtk-3.0/classes/EntryCompletion.html#Gtk.EntryCompletion&quot;&gt;Gtk.EntryCompletion&lt;/a&gt; to it.&lt;/p&gt;
+&lt;p&gt;Gtk.EntryCompletion allows us to use Gtk.TreeStore to provide suggestions based on the text or key entered inside the Gtk.Entry. We already had a global set of tags maintained in the MediaLibrary for the tagging feature. We used it to fill the &lt;a href=&quot;https://lazka.github.io/pgi-docs/Gtk-3.0/classes/EntryCompletion.html#Gtk.EntryCompletion.set_model&quot;&gt;model&lt;/a&gt; required by Gtk.EntryCompletion. We utilise it’s built in Autocompletion and Popover to manage our filtering operation using tags.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/84da5972b5d546b51180a9dccd48c291/extended_search_functionality.gif&quot; alt=&quot;Filtering clips based on tags&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/merge_requests/318&quot;&gt;Link To Submitted MR.&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Work To Be Done&lt;/h3&gt;
+&lt;p&gt;The work in &lt;a href=&quot;https://gitlab.gnome.org/GNOME/pitivi/-/merge_requests/318&quot;&gt;https://gitlab.gnome.org/GNOME/pitivi/-/merge_requests/318&lt;/a&gt; is currently under review, polishing and updating it as per the reviews would be my priority. The introduced test cases for Tagging feature can be reduced and extended to cover more scenarios.&lt;/p&gt;
+&lt;p&gt;One of the extended goals was to introduce filtering clips by date, we need to finalize the roadmap of this feature and my goal would be to implement it.&lt;/p&gt;
+&lt;p&gt;Updating the user manual to mention the Tagging Feature is also a task that I intend to do.&lt;/p&gt;
+&lt;h3&gt;I am grateful to&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Thibault Saunier&lt;/strong&gt; and &lt;strong&gt;Alexandru Băluț&lt;/strong&gt; for all the guidance and support they have given me throughout my time working at Pitivi, they were always present to solve so many of my doubts patiently. Without their support this much work would not have been possible.&lt;/p&gt;</content:encoded>
+</item>
 <item>
 <title><![CDATA[Refactoring Pitivi's Media Library]]></title>
 <description><![CDATA[Since my GSoC project is about improving Pitivi’s Media Library and introducing new features to it, the first task was to clean it up. To…]]></description>
